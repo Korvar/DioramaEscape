@@ -17,6 +17,8 @@ class MenuState extends FlxState
 {
 	override public function create():Void
 	{
+		var flagHash = new Hash<Bool>();
+		
 		#if !neko
 		FlxG.bgColor = 0xff131c1b;
 		#else
