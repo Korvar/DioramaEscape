@@ -7,6 +7,7 @@ import org.flixel.FlxButton;
 import org.flixel.FlxG;
 import org.flixel.FlxPath;
 import org.flixel.FlxSave;
+import org.flixel.FlxSound;
 import org.flixel.FlxSprite;
 import org.flixel.FlxState;
 import org.flixel.FlxText;
@@ -22,7 +23,22 @@ class MenuState extends FlxState
 		FlxG.camera.bgColor = {rgb: 0x131c1b, a: 0xff};
 		#end		
 		FlxG.mouse.show();
-                add(new FlxText(0, 0, 100, "Hello World!", true));
+		
+		#if android
+			FlxG.addSound("Beep");
+		#end
+		
+        var helloWorldText = new FlxText(0, 0, FlxG.width, "Hello World!", true);
+		helloWorldText.setFormat(null, 16, 0xFFFFFF, "center");
+		add(helloWorldText);
+				
+		var testButton = new FlxButton(FlxG.width / 2, FlxG.height / 2, "Test!");
+		add(testButton);
+		var onOver = Assets.getSound("Beep");
+		testButton.setSounds(onOver);
+		
+
+				
 	}
 	
 	override public function destroy():Void

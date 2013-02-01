@@ -34,6 +34,7 @@ class Main extends Sprite
 		
 		initialize();
 		
+		// This here be the bit that determines what class gets run
 		var demo:FlxGame = new ProjectClass();
 		addChild(demo);
 		
