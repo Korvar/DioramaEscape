@@ -91,6 +91,8 @@ class Assets {
 			resourceTypes.set ("assets/data/logo_light.png", "image");
 			resourceClasses.set ("assets/data/nokiafc22.ttf", NME_assets_data_nokiafc22_ttf);
 			resourceTypes.set ("assets/data/nokiafc22.ttf", "font");
+			resourceClasses.set ("assets/data/SamuraiWideAngle.jpg", NME_assets_data_samuraiwideangle_jpg);
+			resourceTypes.set ("assets/data/SamuraiWideAngle.jpg", "image");
 			resourceClasses.set ("assets/data/stick.png", NME_assets_data_stick_png);
 			resourceTypes.set ("assets/data/stick.png", "image");
 			resourceClasses.set ("assets/data/vcr/flixel.png", NME_assets_data_vcr_flixel_png);

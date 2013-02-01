@@ -224,6 +224,11 @@ class ApplicationMain {
 			 return Assets.getFont ("assets/data/nokiafc22.ttf");
 		 
 		
+		if (inName=="assets/data/SamuraiWideAngle.jpg")
+			 
+            return Assets.getBitmapData ("assets/data/SamuraiWideAngle.jpg");
+         
+		
 		if (inName=="assets/data/stick.png")
 			 
             return Assets.getBitmapData ("assets/data/stick.png");
@@ -328,6 +333,7 @@ class NME_assets_data_logo_png extends nme.display.BitmapData { public function 
 class NME_assets_data_logo_corners_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_logo_light_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_nokiafc22_ttf extends nme.text.Font { }
+class NME_assets_data_samuraiwideangle_jpg extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_stick_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_vcr_flixel_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_vcr_open_png extends nme.display.BitmapData { public function new () { super (0, 0); } }

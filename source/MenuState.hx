@@ -28,6 +28,14 @@ class MenuState extends FlxState
 			FlxG.addSound("Beep");
 		#end
 		
+		var backDrop = new FlxSprite();
+		backDrop.loadGraphic("assets/data/SamuraiWideAngle.jpg", false, false, 640, 480);
+		backDrop.x = 0;
+		backDrop.y = 0;
+		backDrop.immovable = true;
+		add(backDrop);
+		
+		
         var helloWorldText = new FlxText(0, 0, FlxG.width, "Hello World!", true);
 		helloWorldText.setFormat(null, 16, 0xFFFFFF, "center");
 		add(helloWorldText);
@@ -39,7 +47,7 @@ class MenuState extends FlxState
 		var onOver = Assets.getSound("Beep");
 		testButton.setSounds(onOver);
 		
-
+		
 				
 	}
 	
