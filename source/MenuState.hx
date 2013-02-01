@@ -32,7 +32,9 @@ class MenuState extends FlxState
 		helloWorldText.setFormat(null, 16, 0xFFFFFF, "center");
 		add(helloWorldText);
 				
-		var testButton = new FlxButton(FlxG.width / 2, FlxG.height / 2, "Test!");
+		var testButton = new FlxButton(FlxG.width / 2, FlxG.height / 2, "");
+		testButton.alpha = 0;
+		testButton.label.alpha = 0;
 		add(testButton);
 		var onOver = Assets.getSound("Beep");
 		testButton.setSounds(onOver);
