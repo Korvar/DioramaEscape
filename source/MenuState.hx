@@ -15,9 +15,34 @@ import org.flixel.FlxU;
 
 class MenuState extends FlxState
 {
+	var flagHash:Hash<Bool>;
+	
 	override public function create():Void
 	{
-		var flagHash = new Hash<Bool>();
+		flagHash = new Hash<Bool>();
+		flagHash.set("Testkey", false);
+		flagHash.set("SamuraiCrest", true);
+		flagHash.set("YagyuEyepatch", true);
+		
+		var testHash1 = new Hash<Bool>();
+		testHash1.set("YagyuEyepatch", true);
+		testHash1.set("SamuraiCrest", true);
+		
+		var testHash2 = new Hash<Bool>();
+		testHash2.set("YagyuEyepatch", false);
+		
+		var testHash3 = new Hash<Bool>();
+		testHash3.set("MadeUpKey", true);
+		
+		#if debug
+		trace(flagHash.toString());
+		trace(flagHash.get("FakeKey"));
+		
+		trace(checkFlags(testHash1));
+		trace(checkFlags(testHash2));
+		trace(checkFlags(testHash3));
+		
+		#end
 		
 		#if !neko
 		FlxG.bgColor = 0xff131c1b;
@@ -62,4 +87,16 @@ class MenuState extends FlxState
 	{
 		super.update();
 	}	
+	
+	function checkFlags(flagList:Hash<Bool>):Bool
+	{
+		for (key in flagList.keys())
+		{
+			if (flagHash.get(key) != flagList.get(key))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }
