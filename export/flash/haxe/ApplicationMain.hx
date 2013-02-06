@@ -104,6 +104,11 @@ class ApplicationMain {
             return Assets.getSound ("Beep");
          
 		
+		if (inName=="assets/1GAMicon.svg")
+			 
+			 return Assets.getText ("assets/1GAMicon.svg");
+         
+		
 		if (inName=="assets/data/autotiles.png")
 			 
             return Assets.getBitmapData ("assets/data/autotiles.png");
@@ -224,6 +229,36 @@ class ApplicationMain {
 			 return Assets.getFont ("assets/data/nokiafc22.ttf");
 		 
 		
+		if (inName=="assets/data/pointer-green.png")
+			 
+            return Assets.getBitmapData ("assets/data/pointer-green.png");
+         
+		
+		if (inName=="assets/data/pointer-yellow.png")
+			 
+            return Assets.getBitmapData ("assets/data/pointer-yellow.png");
+         
+		
+		if (inName=="assets/data/pointers-yellow.png")
+			 
+            return Assets.getBitmapData ("assets/data/pointers-yellow.png");
+         
+		
+		if (inName=="assets/data/pointers.png")
+			 
+            return Assets.getBitmapData ("assets/data/pointers.png");
+         
+		
+		if (inName=="assets/data/SamuraiCloseup01.jpg")
+			 
+            return Assets.getBitmapData ("assets/data/SamuraiCloseup01.jpg");
+         
+		
+		if (inName=="assets/data/SamuraiCloseupMempoMoved01.jpg")
+			 
+            return Assets.getBitmapData ("assets/data/SamuraiCloseupMempoMoved01.jpg");
+         
+		
 		if (inName=="assets/data/SamuraiWideAngle.jpg")
 			 
             return Assets.getBitmapData ("assets/data/SamuraiWideAngle.jpg");
@@ -232,6 +267,11 @@ class ApplicationMain {
 		if (inName=="assets/data/stick.png")
 			 
             return Assets.getBitmapData ("assets/data/stick.png");
+         
+		
+		if (inName=="assets/data/S_pointer.png")
+			 
+            return Assets.getBitmapData ("assets/data/S_pointer.png");
          
 		
 		if (inName=="assets/data/vcr/flixel.png")
@@ -309,6 +349,7 @@ class ApplicationMain {
 }
 
 class NME_assets_data_beep_mp3 extends nme.media.Sound { }
+class NME_assets_1gamicon_svg extends nme.utils.ByteArray { }
 class NME_assets_data_autotiles_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_autotiles_alt_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_base_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
@@ -333,8 +374,15 @@ class NME_assets_data_logo_png extends nme.display.BitmapData { public function 
 class NME_assets_data_logo_corners_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_logo_light_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_nokiafc22_ttf extends nme.text.Font { }
+class NME_assets_data_pointer_green_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_pointer_yellow_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_pointers_yellow_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_pointers_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_samuraicloseup01_jpg extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_samuraicloseupmempomoved01_jpg extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_samuraiwideangle_jpg extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_stick_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_s_pointer_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_vcr_flixel_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_vcr_open_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_vcr_pause_png extends nme.display.BitmapData { public function new () { super (0, 0); } }

@@ -12,7 +12,7 @@ class ApplicationMain
 	public static function main()
 	{
 		#if nme
-		nme.Lib.setPackage("Zaphod", "DioramaEscape", "com.example.myapp", "0.0.1");
+		nme.Lib.setPackage("2d6Studios", "DioramaEscape", "com.example.myapp", "0.0.1");
 		
 		#end
 		
@@ -108,6 +108,13 @@ class ApplicationMain
 		{
 			
 			return nme.Assets.getSound ("Beep");
+			
+		}
+		
+		if (inName == "assets/1GAMicon.svg")
+		{
+			
+			return nme.Assets.getText ("assets/1GAMicon.svg");
 			
 		}
 		
@@ -286,10 +293,66 @@ class ApplicationMain
 			
 		}
 		
+		if (inName == "assets/data/pointer-green.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/pointer-green.png");
+			
+		}
+		
+		if (inName == "assets/data/pointer-yellow.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/pointer-yellow.png");
+			
+		}
+		
+		if (inName == "assets/data/pointers-yellow.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/pointers-yellow.png");
+			
+		}
+		
+		if (inName == "assets/data/pointers.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/pointers.png");
+			
+		}
+		
+		if (inName == "assets/data/SamuraiCloseup01.jpg")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/SamuraiCloseup01.jpg");
+			
+		}
+		
+		if (inName == "assets/data/SamuraiCloseupMempoMoved01.jpg")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/SamuraiCloseupMempoMoved01.jpg");
+			
+		}
+		
+		if (inName == "assets/data/SamuraiWideAngle.jpg")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/SamuraiWideAngle.jpg");
+			
+		}
+		
 		if (inName == "assets/data/stick.png")
 		{
 			
 			return nme.Assets.getBitmapData ("assets/data/stick.png");
+			
+		}
+		
+		if (inName == "assets/data/S_pointer.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/S_pointer.png");
 			
 		}
 		

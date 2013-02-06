@@ -49,7 +49,7 @@ class MenuState extends FlxState
 		#else
 		FlxG.camera.bgColor = {rgb: 0x131c1b, a: 0xff};
 		#end		
-		FlxG.mouse.show();
+		//FlxG.mouse.show();
 		
 		#if android
 			FlxG.addSound("Beep");
@@ -62,6 +62,15 @@ class MenuState extends FlxState
 		backDrop.immovable = true;
 		add(backDrop);
 		
+		var mouseImage = new FlxSprite();
+		mouseImage.loadGraphic("assets/data/pointers.png", true, false, 64, 64);
+		mouseImage.addAnimation("Green", [0]);
+		mouseImage.addAnimation("Yellow", [2]);
+		mouseImage.play("Yellow");
+		//FlxG.mouse.load(mouseImage);
+		FlxG.mouse.show("assets/data/pointer-yellow.png");
+
+		
 		
         var helloWorldText = new FlxText(0, 0, FlxG.width, "Hello World!", true);
 		helloWorldText.setFormat(null, 16, 0xFFFFFF, "center");
@@ -71,11 +80,14 @@ class MenuState extends FlxState
 		testButton.alpha = 0;
 		testButton.label.alpha = 0;
 		add(testButton);
-		var onOver = Assets.getSound("Beep");
-		testButton.setSounds(onOver);
-		
-		
-				
+		//var onOver = Assets.getSound("Beep");
+		//testButton.setSounds(onOver);
+		testButton.onOver = function(){
+				FlxG.mouse.show("assets/data/pointer-green.png");
+			};	
+		testButton.onOut = function() {
+				FlxG.mouse.show("assets/data/pointer-yellow.png");
+			};
 	}
 	
 	override public function destroy():Void

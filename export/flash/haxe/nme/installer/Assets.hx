@@ -43,6 +43,8 @@ class Assets {
 			
 			resourceClasses.set ("Beep", NME_assets_data_beep_mp3);
 			resourceTypes.set ("Beep", "sound");
+			resourceClasses.set ("assets/1GAMicon.svg", NME_assets_1gamicon_svg);
+			resourceTypes.set ("assets/1GAMicon.svg", "text");
 			resourceClasses.set ("assets/data/autotiles.png", NME_assets_data_autotiles_png);
 			resourceTypes.set ("assets/data/autotiles.png", "image");
 			resourceClasses.set ("assets/data/autotiles_alt.png", NME_assets_data_autotiles_alt_png);
@@ -91,10 +93,24 @@ class Assets {
 			resourceTypes.set ("assets/data/logo_light.png", "image");
 			resourceClasses.set ("assets/data/nokiafc22.ttf", NME_assets_data_nokiafc22_ttf);
 			resourceTypes.set ("assets/data/nokiafc22.ttf", "font");
+			resourceClasses.set ("assets/data/pointer-green.png", NME_assets_data_pointer_green_png);
+			resourceTypes.set ("assets/data/pointer-green.png", "image");
+			resourceClasses.set ("assets/data/pointer-yellow.png", NME_assets_data_pointer_yellow_png);
+			resourceTypes.set ("assets/data/pointer-yellow.png", "image");
+			resourceClasses.set ("assets/data/pointers-yellow.png", NME_assets_data_pointers_yellow_png);
+			resourceTypes.set ("assets/data/pointers-yellow.png", "image");
+			resourceClasses.set ("assets/data/pointers.png", NME_assets_data_pointers_png);
+			resourceTypes.set ("assets/data/pointers.png", "image");
+			resourceClasses.set ("assets/data/SamuraiCloseup01.jpg", NME_assets_data_samuraicloseup01_jpg);
+			resourceTypes.set ("assets/data/SamuraiCloseup01.jpg", "image");
+			resourceClasses.set ("assets/data/SamuraiCloseupMempoMoved01.jpg", NME_assets_data_samuraicloseupmempomoved01_jpg);
+			resourceTypes.set ("assets/data/SamuraiCloseupMempoMoved01.jpg", "image");
 			resourceClasses.set ("assets/data/SamuraiWideAngle.jpg", NME_assets_data_samuraiwideangle_jpg);
 			resourceTypes.set ("assets/data/SamuraiWideAngle.jpg", "image");
 			resourceClasses.set ("assets/data/stick.png", NME_assets_data_stick_png);
 			resourceTypes.set ("assets/data/stick.png", "image");
+			resourceClasses.set ("assets/data/S_pointer.png", NME_assets_data_s_pointer_png);
+			resourceTypes.set ("assets/data/S_pointer.png", "image");
 			resourceClasses.set ("assets/data/vcr/flixel.png", NME_assets_data_vcr_flixel_png);
 			resourceTypes.set ("assets/data/vcr/flixel.png", "image");
 			resourceClasses.set ("assets/data/vcr/open.png", NME_assets_data_vcr_open_png);
