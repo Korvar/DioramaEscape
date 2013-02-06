@@ -14,7 +14,7 @@ import org.flixel.FlxButton;
  
  typedef hotSpot = {
 	 var flagList: Hash<Bool>;  // List of flags that determine if the button is put in the scene
-	 var button: FlxButton;
+	 var button: FlxButton;  //Maybe I just need x, y, width, height?
 	 var flagSetList: Hash<Bool>;  // list of flags that the button will set if pushed.
  }
  
