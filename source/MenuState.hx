@@ -23,6 +23,7 @@ class MenuState extends FlxState
 		flagHash.set("Testkey", false);
 		flagHash.set("SamuraiCrest", true);
 		flagHash.set("YagyuEyepatch", true);
+		FlxG.levels[0] = flagHash;
 		
 		var testHash1 = new FlagList();
 		testHash1.set("YagyuEyepatch", true);
@@ -34,17 +35,21 @@ class MenuState extends FlxState
 		var testHash3 = new FlagList();
 		testHash3.set("MadeUpKey", true);
 		
-		FlxG.levels[0] = flagHash;
+		FlxG.levels[1] = new Hash<Scene>();
 		
 		#if debug
-		trace(flagHash.toString());
-		trace(flagHash.get("FakeKey"));
+		trace(FlxG.levels[0].toString());
+		trace(FlxG.levels[0].get("FakeKey"));
 		
 		trace(checkFlags(testHash1) + " " + testHash1.checkFlags());
 		trace(checkFlags(testHash2) + " " + testHash2.checkFlags());
 		trace(checkFlags(testHash3) + " " + testHash3.checkFlags());
-		
+		testHash3.setFlags();
+		trace(FlxG.levels[0].toString());
 		#end
+		
+
+		
 		
 		#if !neko
 		FlxG.bgColor = 0xff131c1b;

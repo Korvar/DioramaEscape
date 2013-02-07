@@ -9,12 +9,12 @@ import org.flixel.FlxSound;
  * @author Mike Cugley
  */
 
- typedef backdrop = {
-	 var flags: flagList; // List of flags that determine if this backdrop is used
+ typedef Backdrop = {
+	 var flags: FlagList; // List of flags that determine if this backdrop is used
 	 var graphic: String;
  }
  
-/* typedef hotSpot = {
+ typedef HotSpot = {
 	 var flagList: Hash<Bool>;  // List of flags that determine if the button is put in the scene
 	 var button: FlxButton;  //Maybe I just need x, y, width, height?
 	 var flagSetList: Hash<Bool>;  // list of flags that the button will set if pushed.
@@ -25,15 +25,38 @@ import org.flixel.FlxSound;
 	 // Have to think of a way of dealing with inventory objects.
 	 // Array of objectname strings that get added?  Array of names that get removed?
 	 
- }*/
+ }
  
 class Scene 
 {
-	var backdrops: Array<backdrop>;
-	var hotSpots: Array<hotSpot>;
+	var backdrops: Array<Backdrop>;  // An array of potential backdrops
+	var hotSpots: Array<HotSpot>;  // Array of potential host spots.
+	var backdrop: String;  // this is the actual backdrop that will appear
 
-	public function new() 
+	public function new(_backdrops:Array<Backdrop> = null, _hotSpots:Array<HotSpot> = null) 
 	{
+		backdrops = _backdrops;
+		hotSpots = _hotSpots;
+		backdrop = "";
+		
+		for (bd in backdrops)
+		{
+			if (bd.flags.checkFlags())
+			{
+				backdrop = bd.graphic;
+			}
+			
+			if (backdrop == "")
+			{
+				// Oh god it's gone wrong
+				// should probably come up with a "you fucked up!" graphic for this case.
+			}
+		}
+		
+		for (hs in hotSpots)
+		{
+			
+		}
 		
 	}
 	
