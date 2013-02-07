@@ -20,7 +20,7 @@ import org.flixel.FlxSound;
 	 var flagSetList: FlagList;  // list of flags that the button will set if pushed.
 	 var outputString: String; // Message that appears if the button is pressed
 	 var scene: String; // Change scene should the button be pressed
-	 var sound:FlxSound;  // the onDown sound
+	 var sound: FlxSound;  // the onDown sound
 	 
 	 // Have to think of a way of dealing with inventory objects.
 	 // Array of objectname strings that get added?  Array of names that get removed?
@@ -39,24 +39,7 @@ class Scene
 		hotSpots = _hotSpots;
 		backdrop = "";
 		
-		for (bd in backdrops)
-		{
-			if (bd.flags.checkFlags())
-			{
-				backdrop = bd.graphic;
-			}
-			
-			if (backdrop == "")
-			{
-				// Oh god it's gone wrong
-				// should probably come up with a "you fucked up!" graphic for this case.
-			}
-		}
-		
-		for (hs in hotSpots)
-		{
-			
-		}
+
 		
 	}
 	
