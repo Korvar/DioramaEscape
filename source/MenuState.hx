@@ -15,32 +15,34 @@ import org.flixel.FlxU;
 
 class MenuState extends FlxState
 {
-	var flagHash:Hash<Bool>;
+	var flagHash:FlagList;
 	
 	override public function create():Void
 	{
-		flagHash = new Hash<Bool>();
+		flagHash = new FlagList();
 		flagHash.set("Testkey", false);
 		flagHash.set("SamuraiCrest", true);
 		flagHash.set("YagyuEyepatch", true);
 		
-		var testHash1 = new Hash<Bool>();
+		var testHash1 = new FlagList();
 		testHash1.set("YagyuEyepatch", true);
 		testHash1.set("SamuraiCrest", true);
 		
-		var testHash2 = new Hash<Bool>();
+		var testHash2 = new FlagList();
 		testHash2.set("YagyuEyepatch", false);
 		
-		var testHash3 = new Hash<Bool>();
+		var testHash3 = new FlagList();
 		testHash3.set("MadeUpKey", true);
+		
+		FlxG.levels[0] = flagHash;
 		
 		#if debug
 		trace(flagHash.toString());
 		trace(flagHash.get("FakeKey"));
 		
-		trace(checkFlags(testHash1));
-		trace(checkFlags(testHash2));
-		trace(checkFlags(testHash3));
+		trace(checkFlags(testHash1) + " " + testHash1.checkFlags());
+		trace(checkFlags(testHash2) + " " + testHash2.checkFlags());
+		trace(checkFlags(testHash3) + " " + testHash3.checkFlags());
 		
 		#end
 		
