@@ -95,6 +95,9 @@ class MenuState extends FlxState
 		testButton.onOut = function() {
 				FlxG.mouse.show("assets/data/pointer-yellow.png");
 			};
+		testButton.onDown = function() {
+				FlxG.switchState(new PlayState());
+			};
 	}
 	
 	override public function destroy():Void

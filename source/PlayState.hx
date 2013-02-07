@@ -20,15 +20,22 @@ class PlayState extends FlxState
 	var hotSpots:FlxGroup;  // All the hot spots go here
 	var backDrop:FlxSprite;
 	var scenes:Hash<Scene>;
+	var flagHash: FlagList;
 	
 	override public function create():Void
 	{
+		
+		// FlxG.levels[0] is the flag list
+		// FlxG.levels[1] is the scene list
+		// FlxG.levels[2] is the name of the next scene to go to
+		
 		flagHash = new FlagList();
 	
 		FlxG.levels[0] = flagHash;
 		
 		FlxG.levels[1] = new Hash<Scene>();  //might not need this
 		
+		FlxG.levels[2] = "SamuraiWideView";
 		#if !neko
 		FlxG.bgColor = 0xff131c1b;
 		#else
@@ -84,22 +91,34 @@ class PlayState extends FlxState
 		var tempBackdropFlagList: FlagList;
 		var tempHotSpotFlagList: FlagList;
 		var tempHotSpotSetFlagList: FlagList;
+		var tempHotSpotButton: FlxButton;
+		var sceneName: String;
 		
+		var tempHotSpot: HotSpot;
+		
+		tempHotSpotFlagList = new FlagList();
+		tempHotSpotSetFlagList = new FlagList();
+		tempHotSpotSetFlagList.set("SceneChange", true); // Makes a scene change happen
+
+		
+		
+		tempHotSpot = new HotSpot(142, 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
 		
 		// Starter scene
+		sceneName = "SamuraiWideView";
 		tempBackdropFlagList = new FlagList();
 		tempHotSpotFlagList = new FlagList();
 		tempHotSpotSetFlagList = new FlagList();
 		
 		
-		setupScenes = new Scene();
+		var firstScene = new Scene();
 		
 		
 	}
 	
 	function changeScene(newScene:Scene)
 	{
-		var backDropName: String;
+		var backDropName: String = "";
 		
 		for (bd in newScene.backdrops)
 		{
@@ -108,7 +127,7 @@ class PlayState extends FlxState
 				backDropName = bd.graphic;
 			}
 			
-			if (backdrop == "")
+			if (backDropName == "")
 			{
 				// Oh god it's gone wrong
 				// should probably come up with a "you fucked up!" graphic for this case.
@@ -124,7 +143,7 @@ class PlayState extends FlxState
 		{
 			if (hs.flagSetList.checkFlags())
 			{
-				hotSpots.add(hs.button);
+				hotSpots.add(hs);
 			}
 		}
 	}
