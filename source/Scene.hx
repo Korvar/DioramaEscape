@@ -15,9 +15,9 @@ import org.flixel.FlxSound;
  }
  
  typedef HotSpot = {
-	 var flagList: Hash<Bool>;  // List of flags that determine if the button is put in the scene
+	 var flagList: FlagList;  // List of flags that determine if the button is put in the scene
 	 var button: FlxButton;  //Maybe I just need x, y, width, height?
-	 var flagSetList: Hash<Bool>;  // list of flags that the button will set if pushed.
+	 var flagSetList: FlagList;  // list of flags that the button will set if pushed.
 	 var outputString: String; // Message that appears if the button is pressed
 	 var scene: String; // Change scene should the button be pressed
 	 var sound:FlxSound;  // the onDown sound
