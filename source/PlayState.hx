@@ -14,6 +14,11 @@ import org.flixel.FlxState;
 import org.flixel.FlxText;
 import org.flixel.FlxU;
 
+/* typedef Backdrop = {
+	 var flags: FlagList; // List of flags that determine if this backdrop is used
+	 var graphic: String;
+ }*/
+
 class PlayState extends FlxState
 {
 	var flags:FlagList;  // the master flag list
@@ -84,17 +89,26 @@ class PlayState extends FlxState
 		super.update();
 		
 		// Check for Scene change
-	}	
+		if (FlxG.levels[0].get("SceneChange"))
+		{
+			changeScene(FlxG.levels[1].get(FlxG.levels[2]));
+			FlxG.levels[0].set("SceneChange", false);  // otherwise we'll change scenes forever!
+		}
+	}
+	
 	
 	function setupScenes()
 	{
 		var tempBackdropFlagList: FlagList;
+
+		var tempHotSpot: HotSpot;
 		var tempHotSpotFlagList: FlagList;
 		var tempHotSpotSetFlagList: FlagList;
-		var tempHotSpotButton: FlxButton;
+
 		var sceneName: String;
 		
-		var tempHotSpot: HotSpot;
+		var backDropList: Array<Backdrop> = new Array<Backdrop>();
+		var hotSpotList: Array<HotSpot> = new Array<HotSpot>();
 		
 		tempHotSpotFlagList = new FlagList();
 		tempHotSpotSetFlagList = new FlagList();
@@ -103,6 +117,9 @@ class PlayState extends FlxState
 		
 		
 		tempHotSpot = new HotSpot(142, 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		hotSpotList.push(tempHotSpot);
+		
+		
 		
 		// Starter scene
 		sceneName = "SamuraiWideView";
@@ -111,7 +128,7 @@ class PlayState extends FlxState
 		tempHotSpotSetFlagList = new FlagList();
 		
 		
-		var firstScene = new Scene();
+		var firstScene = new Scene(backDropList, hotSpotList );
 		
 		
 	}
