@@ -47,10 +47,7 @@ class MenuState extends FlxState
 		testHash3.setFlags();
 		trace(FlxG.levels[0].toString());
 		#end
-		
 
-		
-		
 		#if !neko
 		FlxG.bgColor = 0xff131c1b;
 		#else
@@ -63,7 +60,7 @@ class MenuState extends FlxState
 		#end
 		
 		var backDrop = new FlxSprite();
-		backDrop.loadGraphic("assets/data/SamuraiWideAngle.jpg", false, false, 640, 480);
+		backDrop.makeGraphic(640, 480, 0xffff0000);
 		backDrop.x = 0;
 		backDrop.y = 0;
 		backDrop.immovable = true;
@@ -83,12 +80,12 @@ class MenuState extends FlxState
 		helloWorldText.setFormat(null, 16, 0xFFFFFF, "center");
 		add(helloWorldText);
 				
-		var testButton = new FlxButton(FlxG.width / 2, FlxG.height / 2, "");
-		testButton.alpha = 0;
-		testButton.label.alpha = 0;
-		add(testButton);
-		//var onOver = Assets.getSound("Beep");
-		//testButton.setSounds(onOver);
+		var testButton = new FlxButton(FlxG.width / 2, FlxG.height / 2, "Start");
+		// testButton.alpha = 0;
+		// testButton.label.alpha = 0;
+
+		var onOver = Assets.getSound("Beep");
+		testButton.setSounds(onOver);
 		testButton.onOver = function(){
 				FlxG.mouse.show("assets/data/pointer-green.png");
 			};	
@@ -97,7 +94,9 @@ class MenuState extends FlxState
 			};
 		testButton.onDown = function() {
 				FlxG.switchState(new PlayState());
+				this.kill();
 			};
+		add(testButton);
 	}
 	
 	override public function destroy():Void

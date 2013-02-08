@@ -40,7 +40,7 @@ class PlayState extends FlxState
 		
 		FlxG.levels[1] = new Hash<Scene>();  //might not need this
 		
-		FlxG.levels[2] = "SamuraiWideView";
+		
 		#if !neko
 		FlxG.bgColor = 0xff131c1b;
 		#else
@@ -61,22 +61,10 @@ class PlayState extends FlxState
 		add(hotSpots);
 		
 		setupScenes();
+		FlxG.levels[0].set("SceneChange", true);  //Trigger a scene change
 		
 		FlxG.mouse.show("assets/data/pointer-yellow.png");
-		
-				
-		var testButton = new FlxButton(FlxG.width / 2, FlxG.height / 2, "");
-		testButton.alpha = 0;
-		testButton.label.alpha = 0;
-		add(testButton);
-		//var onOver = Assets.getSound("Beep");
-		//testButton.setSounds(onOver);
-		testButton.onOver = function(){
-				FlxG.mouse.show("assets/data/pointer-green.png");
-			};	
-		testButton.onOut = function() {
-				FlxG.mouse.show("assets/data/pointer-yellow.png");
-			};
+
 	}
 	
 	override public function destroy():Void
@@ -100,6 +88,7 @@ class PlayState extends FlxState
 	function setupScenes()
 	{
 		var tempBackdropFlagList: FlagList;
+		var tempBackdrop: Backdrop;
 
 		var tempHotSpot: HotSpot;
 		var tempHotSpotFlagList: FlagList;
@@ -109,36 +98,46 @@ class PlayState extends FlxState
 		
 		var backDropList: Array<Backdrop> = new Array<Backdrop>();
 		var hotSpotList: Array<HotSpot> = new Array<HotSpot>();
-		
-		tempHotSpotFlagList = new FlagList();
-		tempHotSpotSetFlagList = new FlagList();
-		tempHotSpotSetFlagList.set("SceneChange", true); // Makes a scene change happen
 
-		
-		
-		tempHotSpot = new HotSpot(142, 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
-		hotSpotList.push(tempHotSpot);
-		
-		
 		
 		// Starter scene
 		sceneName = "SamuraiWideView";
-		tempBackdropFlagList = new FlagList();
+
+		// Hotspot
 		tempHotSpotFlagList = new FlagList();
 		tempHotSpotSetFlagList = new FlagList();
+		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
+		tempHotSpot = new HotSpot(142, 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		hotSpotList.push(tempHotSpot);
+
+		// Backdrop
+		tempBackdropFlagList = new FlagList();
+		// As there is no conditional backdrop, just leave the FlagList as default	
+		tempBackdrop = { graphic: "assets/data/SamuraiWideAngle.jpg", flags: tempBackdropFlagList };
+		backDropList.push(tempBackdrop);
 		
+		var firstScene: Scene = new Scene(backDropList, hotSpotList);
 		
-		var firstScene = new Scene(backDropList, hotSpotList );
+		FlxG.levels[1].set(sceneName, firstScene);
 		
-		
+		FlxG.levels[2] = "SamuraiWideView";  // This is the starting view
 	}
 	
 	function changeScene(newScene:Scene)
 	{
 		var backDropName: String = "";
 		
+		#if debug
+		trace(newScene.backdrops.toString());
+		#end
+		
 		for (bd in newScene.backdrops)
 		{
+			#if debug
+			trace(bd.graphic);
+			trace(bd.flags.toString());
+			#end
+			
 			if (bd.flags.checkFlags())
 			{
 				backDropName = bd.graphic;
@@ -149,10 +148,18 @@ class PlayState extends FlxState
 				// Oh god it's gone wrong
 				// should probably come up with a "you fucked up!" graphic for this case.
 				backDrop.makeGraphic(640, 480, 0xffff0000);  // Big red screen
+				#if debug
+				trace("Graphic load failed");
+				trace(backDropName);
+				#end
 			}
 			else
 			{
 				backDrop.loadGraphic(backDropName, false, false, 640, 480); // Should have a Backdrop height / width variable.
+				#if debug
+				trace("Graphic load reached");
+				trace(backDropName);
+				#end
 			}
 		}
 		
@@ -163,5 +170,10 @@ class PlayState extends FlxState
 				hotSpots.add(hs);
 			}
 		}
+		
+		#if debug
+		trace("Scene changed!");
+		trace(newScene);
+		#end
 	}
 }
