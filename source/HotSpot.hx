@@ -42,9 +42,16 @@ class HotSpot extends FlxButton
 			FlxG.mouse.show("assets/data/pointer-yellow.png");
 		};
 		onDown = function() {
+			FlxG.mouse.show("assets/data/pointer-yellow.png");
 			flagSetList.setFlags();
 			// Set the output string, if need be
-			};
+			
+			// Change Scene
+			if (scene != "")
+			{
+				FlxG.levels[2] = scene;
+			}
+		};
 		
 	}
 	

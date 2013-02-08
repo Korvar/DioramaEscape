@@ -26,6 +26,7 @@ class PlayState extends FlxState
 	var backDrop:FlxSprite;
 	var scenes:Hash<Scene>;
 	var flagHash: FlagList;
+	var SceneChangingFlag: Bool = false;
 	
 	override public function create():Void
 	{
@@ -33,10 +34,6 @@ class PlayState extends FlxState
 		// FlxG.levels[0] is the flag list
 		// FlxG.levels[1] is the scene list
 		// FlxG.levels[2] is the name of the next scene to go to
-		
-		flagHash = new FlagList();
-	
-		FlxG.levels[0] = flagHash;
 		
 		FlxG.levels[1] = new Hash<Scene>();  //might not need this
 		
@@ -74,14 +71,34 @@ class PlayState extends FlxState
 
 	override public function update():Void
 	{
-		super.update();
+
 		
 		// Check for Scene change
-		if (FlxG.levels[0].get("SceneChange"))
+		if (FlxG.levels[0].get("SceneChange") == true && SceneChangingFlag == false)
 		{
+			SceneChangingFlag = true;
+			#if debug
+			trace("=============================");
+			trace("Scene Change Requested");
+			trace(FlxG.levels[0].toString());
+			trace(FlxG.levels[1]);
+			// trace(FlxG.levels[1].tostring());
+			trace(FlxG.levels[2]);
+			#end
+			
+			
 			changeScene(FlxG.levels[1].get(FlxG.levels[2]));
+			
+			#if debug
+			trace(FlxG.levels[0].toString());
+			trace("================================");
+			#end
+			
+			SceneChangingFlag = false;
 			FlxG.levels[0].set("SceneChange", false);  // otherwise we'll change scenes forever!
 		}
+		
+		super.update();
 	}
 	
 	
@@ -107,6 +124,7 @@ class PlayState extends FlxState
 		tempHotSpotFlagList = new FlagList();
 		tempHotSpotSetFlagList = new FlagList();
 		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
+		tempHotSpotSetFlagList.set("MempoMoved", false);
 		tempHotSpot = new HotSpot(142, 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
 		hotSpotList.push(tempHotSpot);
 
@@ -121,15 +139,67 @@ class PlayState extends FlxState
 		FlxG.levels[1].set(sceneName, firstScene);
 		
 		FlxG.levels[2] = "SamuraiWideView";  // This is the starting view
+		
+		sceneName = "SamuraiCloseUp";
+		// Hotspot
+		// Reset everything
+		hotSpotList = new Array<HotSpot>();
+		tempHotSpotFlagList = new FlagList();
+		tempHotSpotFlagList.set("MempoMoved", false);
+		tempHotSpotSetFlagList = new FlagList();
+		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
+		tempHotSpotSetFlagList.set("MempoMoved", true); // Pressing this button will move the mempo
+		tempHotSpot = new HotSpot(196, 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		hotSpotList.push(tempHotSpot);
+		
+		// Same hotspot as before, except it only shows if the mempo is moved, and puts it back.
+		tempHotSpotFlagList = new FlagList();
+		tempHotSpotSetFlagList = new FlagList();
+		tempHotSpotFlagList.set("MempoMoved", true);
+		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
+		tempHotSpotSetFlagList.set("MempoMoved", false); // Pressing this button will move the mempo back
+		tempHotSpot = new HotSpot(196, 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		hotSpotList.push(tempHotSpot);
+		
+		// Backdrop
+		backDropList = new Array<Backdrop>();
+		tempBackdropFlagList = new FlagList();
+		tempBackdropFlagList.set("MempoMoved", false);  //Only show this one if the Mempo hasn't moved
+		tempBackdrop = { graphic: "assets/data/SamuraiCloseup01.jpg", flags: tempBackdropFlagList };
+		backDropList.push(tempBackdrop);	
+		
+		tempBackdropFlagList = new FlagList();
+		tempBackdropFlagList.set("MempoMoved", true);
+		tempBackdrop = { graphic: "assets/data/SamuraiCloseupMempoMoved01.jpg", flags: tempBackdropFlagList };
+		backDropList.push(tempBackdrop);
+		
+		var samuraiCloseupScene: Scene = new Scene(backDropList, hotSpotList); 
+		FlxG.levels[1].set(sceneName, samuraiCloseupScene);
+		
+		#if debug
+		trace("Scene Setup Done");
+		trace(FlxG.levels[1].toString());
+		trace("=======================");
+		#end
+		
 	}
 	
 	function changeScene(newScene:Scene)
 	{
-		var backDropName: String = "";
-		
 		#if debug
-		trace(newScene.backdrops.toString());
+		trace("Scene Change Start");
+		trace(FlxG.levels[2]);
+		//trace(newScene.backdrops.length);
+		trace(newScene);
+		trace(FlxG.levels[1].toString());
+		trace("=======================");
 		#end
+		
+
+		
+		hotSpots.callAll("kill"); //Get rid of the old hotspots.
+
+		var backDropName: String = "";
 		
 		for (bd in newScene.backdrops)
 		{
@@ -143,29 +213,31 @@ class PlayState extends FlxState
 				backDropName = bd.graphic;
 			}
 			
-			if (backDropName == "")
-			{
-				// Oh god it's gone wrong
-				// should probably come up with a "you fucked up!" graphic for this case.
-				backDrop.makeGraphic(640, 480, 0xffff0000);  // Big red screen
-				#if debug
-				trace("Graphic load failed");
-				trace(backDropName);
-				#end
-			}
-			else
-			{
-				backDrop.loadGraphic(backDropName, false, false, 640, 480); // Should have a Backdrop height / width variable.
-				#if debug
-				trace("Graphic load reached");
-				trace(backDropName);
-				#end
-			}
+
+		}
+		
+		if (backDropName == "")
+		{
+			// Oh god it's gone wrong
+			// should probably come up with a "you fucked up!" graphic for this case.
+			backDrop.makeGraphic(640, 480, 0xffff0000);  // Big red screen
+			#if debug
+			trace("Graphic load failed");
+			trace(backDropName);
+			#end
+		}
+		else
+		{
+			backDrop.loadGraphic(backDropName, false, false, 640, 480); // Should have a Backdrop height / width variable.
+			#if debug
+			trace("Graphic load reached");
+			trace(backDropName);
+			#end
 		}
 		
 		for (hs in newScene.hotSpots)
 		{
-			if (hs.flagSetList.checkFlags())
+			if (hs.flagList.checkFlags())
 			{
 				hotSpots.add(hs);
 			}
@@ -174,6 +246,7 @@ class PlayState extends FlxState
 		#if debug
 		trace("Scene changed!");
 		trace(newScene);
+		trace(FlxG.levels[0].toString());
 		#end
 	}
 }
