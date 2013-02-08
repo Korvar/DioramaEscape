@@ -194,10 +194,8 @@ class PlayState extends FlxState
 		trace(FlxG.levels[1].toString());
 		trace("=======================");
 		#end
-		
 
-		
-		hotSpots.callAll("kill"); //Get rid of the old hotspots.
+		hotSpots.clear(); //Get rid of the old hotspots.
 
 		var backDropName: String = "";
 		

@@ -20,12 +20,12 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		flagHash = new FlagList();
-		flagHash.set("Testkey", false);
-		flagHash.set("SamuraiCrest", true);
-		flagHash.set("YagyuEyepatch", true);
+		// flagHash.set("Testkey", false);
+		// flagHash.set("SamuraiCrest", true);
+		// flagHash.set("YagyuEyepatch", true);
 		FlxG.levels[0] = flagHash;
 		
-		var testHash1 = new FlagList();
+/*		var testHash1 = new FlagList();
 		testHash1.set("YagyuEyepatch", true);
 		testHash1.set("SamuraiCrest", true);
 		
@@ -33,11 +33,11 @@ class MenuState extends FlxState
 		testHash2.set("YagyuEyepatch", false);
 		
 		var testHash3 = new FlagList();
-		testHash3.set("MadeUpKey", true);
+		testHash3.set("MadeUpKey", true);*/
 		
 		FlxG.levels[1] = new Hash<Scene>();
 		
-		#if debug
+/*		#if debug
 		trace(FlxG.levels[0].toString());
 		trace(FlxG.levels[0].get("FakeKey"));
 		
@@ -46,7 +46,7 @@ class MenuState extends FlxState
 		trace(checkFlags(testHash3) + " " + testHash3.checkFlags());
 		testHash3.setFlags();
 		trace(FlxG.levels[0].toString());
-		#end
+		#end*/
 
 		#if !neko
 		FlxG.bgColor = 0xffffffff;
