@@ -24,9 +24,15 @@ class PlayState extends FlxState
 	var flags:FlagList;  // the master flag list
 	var hotSpots:FlxGroup;  // All the hot spots go here
 	var backDrop:FlxSprite;
+	var HUD:FlxGroup; // All the controls stuff
+	var hudOverlay:FlxSprite;
+	var inventoryBackdrop:FlxSprite;
 	var scenes:Hash<Scene>;
+	var items:Hash<Item>;
+	var itemGroup:FlxGroup;
 	var flagHash: FlagList;
 	var SceneChangingFlag: Bool = false;
+	var messageText: FlxText;
 	
 	override public function create():Void
 	{
@@ -49,13 +55,43 @@ class PlayState extends FlxState
 		#end
 		
 		backDrop = new FlxSprite();
-		backDrop.x = 0;
-		backDrop.y = 0;
+		backDrop.x = 30;
+		backDrop.y = 30;
 		backDrop.immovable = true;
 		add(backDrop);
 		
+		// Inventory Detail Screen
+		inventoryBackdrop = new FlxSprite();
+		inventoryBackdrop.x = backDrop.x + 60;
+		inventoryBackdrop.y = backDrop.y + 60;
+		inventoryBackdrop.immovable = true;
+		inventoryBackdrop.alpha = 0;
+		add(inventoryBackdrop);
+		
 		hotSpots = new FlxGroup(0);
 		add(hotSpots);
+		
+		itemGroup = new FlxGroup();
+		add(itemGroup);
+		setupItems();
+		
+		
+		messageText = new FlxText(30, 640, 975, "Test Text");
+		messageText.height  = 60;
+		messageText.alignment = "center";
+		add(messageText);		
+		
+		// Want this last so it's on top of everything else.
+		HUD = new FlxGroup();
+		hudOverlay = new FlxSprite();
+		hudOverlay.loadGraphic("assets/data/Mockup03.png");
+		hudOverlay.x = 0;
+		hudOverlay.y = 0;
+		hudOverlay.immovable = true;
+		HUD.add(hudOverlay);
+		add(HUD);
+
+		
 		
 		setupScenes();
 		FlxG.levels[0].set("SceneChange", true);  //Trigger a scene change
@@ -125,7 +161,7 @@ class PlayState extends FlxState
 		tempHotSpotSetFlagList = new FlagList();
 		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
 		tempHotSpotSetFlagList.set("MempoMoved", false);
-		tempHotSpot = new HotSpot(142, 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		tempHotSpot = new HotSpot(backDrop.x + 142, backDrop.y + 83, 124, 110, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
 		hotSpotList.push(tempHotSpot);
 
 		// Backdrop
@@ -149,7 +185,7 @@ class PlayState extends FlxState
 		tempHotSpotSetFlagList = new FlagList();
 		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
 		tempHotSpotSetFlagList.set("MempoMoved", true); // Pressing this button will move the mempo
-		tempHotSpot = new HotSpot(196, 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		tempHotSpot = new HotSpot(backDrop.x + 196, backDrop.y + 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
 		hotSpotList.push(tempHotSpot);
 		
 		// Same hotspot as before, except it only shows if the mempo is moved, and puts it back.
@@ -158,7 +194,7 @@ class PlayState extends FlxState
 		tempHotSpotFlagList.set("MempoMoved", true);
 		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
 		tempHotSpotSetFlagList.set("MempoMoved", false); // Pressing this button will move the mempo back
-		tempHotSpot = new HotSpot(196, 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		tempHotSpot = new HotSpot(backDrop.x + 196, backDrop.y + 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
 		hotSpotList.push(tempHotSpot);
 		
 		// Backdrop
@@ -246,5 +282,14 @@ class PlayState extends FlxState
 		trace(newScene);
 		trace(FlxG.levels[0].toString());
 		#end
+	}
+	
+	function setupItems()
+	{
+		items = new Hash<Item>();
+		var itemList: Array<String> = ["Key", "Mask", "Thing"];
+		
+		
+		
 	}
 }

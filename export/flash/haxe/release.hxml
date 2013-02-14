@@ -8,5 +8,5 @@
 -D web
 -swf-version 10.1
 -swf9 export/flash/bin/DioramaEscape.swf
--swf-header 640:480:30:FFFFFF
+-swf-header 1280:725:30:FFFFFF
 -cp export/flash/haxe

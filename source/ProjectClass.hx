@@ -10,8 +10,8 @@ class ProjectClass extends FlxGame
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
-		var ratioX:Float = stageWidth / 640;
-		var ratioY:Float = stageHeight / 480;
+		var ratioX:Float = stageWidth / 1280;  // The resolution of a Nexus 7
+		var ratioY:Float = stageHeight / 725; // Minus the actionbar.
 		var ratio:Float = Math.min(ratioX, ratioY);
 		super(Math.floor(stageWidth / ratio), Math.floor(stageHeight / ratio), MenuState, ratio, 30, 30);
 		forceDebugger = true;

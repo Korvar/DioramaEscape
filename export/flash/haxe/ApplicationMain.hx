@@ -209,6 +209,16 @@ class ApplicationMain {
             return Assets.getBitmapData ("assets/data/handle.png");
          
 		
+		if (inName=="assets/data/ItemDetail01.png")
+			 
+            return Assets.getBitmapData ("assets/data/ItemDetail01.png");
+         
+		
+		if (inName=="assets/data/key01.png")
+			 
+            return Assets.getBitmapData ("assets/data/key01.png");
+         
+		
 		if (inName=="assets/data/logo.png")
 			 
             return Assets.getBitmapData ("assets/data/logo.png");
@@ -222,6 +232,11 @@ class ApplicationMain {
 		if (inName=="assets/data/logo_light.png")
 			 
             return Assets.getBitmapData ("assets/data/logo_light.png");
+         
+		
+		if (inName=="assets/data/Mockup03.png")
+			 
+            return Assets.getBitmapData ("assets/data/Mockup03.png");
          
 		
 		if (inName=="assets/data/nokiafc22.ttf")
@@ -370,9 +385,12 @@ class NME_assets_data_default_png extends nme.display.BitmapData { public functi
 class NME_assets_data_fontdata10pt_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_fontdata11pt_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_handle_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_itemdetail01_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_key01_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_logo_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_logo_corners_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_logo_light_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
+class NME_assets_data_mockup03_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_nokiafc22_ttf extends nme.text.Font { }
 class NME_assets_data_pointer_green_png extends nme.display.BitmapData { public function new () { super (0, 0); } }
 class NME_assets_data_pointer_yellow_png extends nme.display.BitmapData { public function new () { super (0, 0); } }

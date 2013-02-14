@@ -85,12 +85,18 @@ class Assets {
 			resourceTypes.set ("assets/data/fontData11pt.png", "image");
 			resourceClasses.set ("assets/data/handle.png", NME_assets_data_handle_png);
 			resourceTypes.set ("assets/data/handle.png", "image");
+			resourceClasses.set ("assets/data/ItemDetail01.png", NME_assets_data_itemdetail01_png);
+			resourceTypes.set ("assets/data/ItemDetail01.png", "image");
+			resourceClasses.set ("assets/data/key01.png", NME_assets_data_key01_png);
+			resourceTypes.set ("assets/data/key01.png", "image");
 			resourceClasses.set ("assets/data/logo.png", NME_assets_data_logo_png);
 			resourceTypes.set ("assets/data/logo.png", "image");
 			resourceClasses.set ("assets/data/logo_corners.png", NME_assets_data_logo_corners_png);
 			resourceTypes.set ("assets/data/logo_corners.png", "image");
 			resourceClasses.set ("assets/data/logo_light.png", NME_assets_data_logo_light_png);
 			resourceTypes.set ("assets/data/logo_light.png", "image");
+			resourceClasses.set ("assets/data/Mockup03.png", NME_assets_data_mockup03_png);
+			resourceTypes.set ("assets/data/Mockup03.png", "image");
 			resourceClasses.set ("assets/data/nokiafc22.ttf", NME_assets_data_nokiafc22_ttf);
 			resourceTypes.set ("assets/data/nokiafc22.ttf", "font");
 			resourceClasses.set ("assets/data/pointer-green.png", NME_assets_data_pointer_green_png);

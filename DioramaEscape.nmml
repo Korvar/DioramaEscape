@@ -2,8 +2,8 @@
 <project>
 	<app title="DioramaEscape" file="DioramaEscape" main="Main" version="0.0.1" company="2d6Studios" />
 	
-	<window width="640" height="480" fps="30" orientation="portrait" resizable="true" if="web" />
-	<window width="640" height="480" fps="30" orientation="landscape" fullscreen="false" unless="web" />
+	<window width="1280" height="725" fps="30" orientation="portrait" resizable="true" if="web" />
+	<window width="1280" height="725" fps="30" orientation="landscape" fullscreen="false" unless="web" />
  	
 	<set name="BUILD_DIR" value="export" />
 	
@@ -42,7 +42,9 @@
 	<assets path="assets" exclude="*.wav" if="flash" />
 	<assets path="assets" unless="flash" />
 	
-	<icon name="assets/iGAMIcon.svg" />
+	<icon name="assets/1GAMicon.svg
+	" />
+	
 	
 	<haxelib name="nme" />
 	<haxelib name="flixel"/>

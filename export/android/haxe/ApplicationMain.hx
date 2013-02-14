@@ -20,10 +20,10 @@ class ApplicationMain
 		wx.App.boot(function()
 		{
 			
-			frame = wx.Frame.create(null, null, "DioramaEscape", null, { width: 640, height: 480 });
+			frame = wx.Frame.create(null, null, "DioramaEscape", null, { width: 1280, height: 725 });
 			
 			#if nme
-			var stage = wx.NMEStage.create(frame, null, null, { width: 640, height: 480 });
+			var stage = wx.NMEStage.create(frame, null, null, { width: 1280, height: 725 });
 			#end
 			
 			Main.main();
@@ -38,7 +38,7 @@ class ApplicationMain
 		
 		nme.Lib.create(function()
 			{ 
-				if (640 == 0 && 480 == 0)
+				if (1280 == 0 && 725 == 0)
 				{
 					nme.Lib.current.stage.align = nme.display.StageAlign.TOP_LEFT;
 					nme.Lib.current.stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;
@@ -69,7 +69,7 @@ class ApplicationMain
 					#end
 				}
 			},
-			640, 480, 
+			1280, 725, 
 			30, 
 			16777215,
 			(true ? nme.Lib.HARDWARE : 0) |
@@ -265,6 +265,20 @@ class ApplicationMain
 			
 		}
 		
+		if (inName == "assets/data/ItemDetail01.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/ItemDetail01.png");
+			
+		}
+		
+		if (inName == "assets/data/key01.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/key01.png");
+			
+		}
+		
 		if (inName == "assets/data/logo.png")
 		{
 			
@@ -283,6 +297,13 @@ class ApplicationMain
 		{
 			
 			return nme.Assets.getBitmapData ("assets/data/logo_light.png");
+			
+		}
+		
+		if (inName == "assets/data/Mockup03.png")
+		{
+			
+			return nme.Assets.getBitmapData ("assets/data/Mockup03.png");
 			
 		}
 		
