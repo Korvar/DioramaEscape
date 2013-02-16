@@ -287,9 +287,32 @@ class PlayState extends FlxState
 	function setupItems()
 	{
 		items = new Hash<Item>();
-		var itemList: Array<String> = ["Key", "Mask", "Thing"];
+		var itemList: Array<String> = ["Key", "Mask", "Thing", "TestItem1", "TestItem2", "TestItem3", "TestItem4", "TextItem5"];
 		
+		var itemX:Float = 1035;
+		var itemY:Float = 45;
 		
+		for(item in itemList)
+		{
+			var itemFlagList = new FlagList();
+			var itemSetFlagList = new FlagList();
+			
+			itemFlagList.set(item + "Got", true);
+			itemSetFlagList.set(item + "Used", true);
+			var tempItem = new Item(itemX, itemY, 95, 95, itemFlagList, itemSetFlagList, "", item + "Detail", null);
+			items.set(item, tempItem);
+			itemGroup.add(tempItem);
+			if (itemX == 1035)
+			{
+				itemX += 106;
+			}
+			else 
+			{
+				itemX = 1035;
+				itemY += 110;
+
+			}
+		}
 		
 	}
 }

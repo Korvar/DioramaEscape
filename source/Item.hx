@@ -21,6 +21,8 @@ class Item extends HotSpot
 		alpha = 1;  // Items, unlike hotspots, are visible
 		inUse = false;
 		
+		makeGraphic(95, 95);
+		
 		onDown = function() {
 			FlxG.mouse.show("assets/data/pointer-yellow.png");
 			flagSetList.setFlags();
