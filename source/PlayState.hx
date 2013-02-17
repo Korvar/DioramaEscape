@@ -41,6 +41,8 @@ class PlayState extends FlxState
 		// FlxG.levels[1] is the scene list
 		// FlxG.levels[2] is the name of the next scene to go to
 		
+		flagHash = new FlagList();
+		FlxG.levels[0] = flagHash;
 		FlxG.levels[1] = new Hash<Scene>();  //might not need this
 		
 		
