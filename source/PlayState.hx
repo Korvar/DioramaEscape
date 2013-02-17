@@ -73,7 +73,7 @@ class PlayState extends FlxState
 		
 		itemGroup = new FlxGroup();
 		add(itemGroup);
-		setupItems();
+		//setupItems();
 		
 		
 		messageText = new FlxText(30, 640, 975, "Test Text");
@@ -294,12 +294,8 @@ class PlayState extends FlxState
 		
 		for(item in itemList)
 		{
-			var itemFlagList = new FlagList();
-			var itemSetFlagList = new FlagList();
 			
-			itemFlagList.set(item + "Got", true);
-			itemSetFlagList.set(item + "Used", true);
-			var tempItem = new Item(itemX, itemY, 95, 95, itemFlagList, itemSetFlagList, "", item + "Detail", null);
+			var tempItem = new Item(itemX, itemY, 95, 95, item);
 			items.set(item, tempItem);
 			itemGroup.add(tempItem);
 			if (itemX == 1035)

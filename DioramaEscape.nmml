@@ -42,8 +42,7 @@
 	<assets path="assets" exclude="*.wav" if="flash" />
 	<assets path="assets" unless="flash" />
 	
-	<icon name="assets/1GAMicon.svg
-	" />
+	<icon name="assets/1GAMicon.svg" />
 	
 	
 	<haxelib name="nme" />

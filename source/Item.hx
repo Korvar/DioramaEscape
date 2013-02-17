@@ -13,13 +13,26 @@ import org.flixel.FlxG;
 class Item extends HotSpot
 {
 	var inUse: Bool;
-	
+	var itemFlagList:FlagList;
+	var itemSetFlagList:FlagList;
+	var itemUnSetFlagList:FlagList;
 
-	public function new(X:Float, Y:Float, Width:Float, Height:Float, Flags:FlagList, SetFlags:FlagList, OutputString:String, ItemDetail:String, Sound:FlxSound) 
+	public function new(X:Float, Y:Float, Width:Float, Height:Float, ItemName:String) 
 	{
-		super(X, Y, Width, Height, Flags, SetFlags, OutputString, ItemDetail, Sound);
+		itemFlagList = new FlagList();
+		itemSetFlagList = new FlagList();
+		itemUnSetFlagList = new FlagList();
+		
+		itemFlagList.set(ItemName + "Got", true);
+		itemSetFlagList.set(ItemName + "Used", true);
+		itemUnSetFlagList.set(ItemName + "Used", false);
+
+		
+		super(X, Y, Width, Height, itemFlagList, itemSetFlagList, "", ItemName + "Detail", null);
 		alpha = 1;  // Items, unlike hotspots, are visible
 		inUse = false;
+		
+
 		
 		makeGraphic(95, 95);
 		
@@ -31,11 +44,12 @@ class Item extends HotSpot
 			{
 				inUse == true;
 				// Somehow set inUse to all the other items to false.
+				// Do it in PlayState
 			}
 			else 
 			{
 				inUse == false;
-				flagSetList.setFlags();
+				itemUnSetFlagList.setFlags();
 
 			}
 		};
