@@ -37,10 +37,10 @@ class MenuState extends FlxState
 		backDrop.immovable = true;
 		add(backDrop);
 		
-        var titleText = new FlxText(0, FlxG.height / 10, FlxG.width, "Diorama Escape", true);
+        var titleText = new FlxText(0, FlxG.height / 10, FlxG.width, "Diorama Escape");
 		titleText.setFormat(null, FlxG.height / 10, 0xFFFFFF, "center");
 		
-		var clickToContinueText = new FlxText(0, FlxG.height * 2 / 3, FlxG.width, "Click To Continue", true);
+		var clickToContinueText = new FlxText(0, FlxG.height * 2 / 3, FlxG.width, "Click To Continue");
 		clickToContinueText.setFormat(null, FlxG.height / 20, 0xFFFFA700, "center");
 		
 		add(titleText);

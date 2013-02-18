@@ -32,7 +32,7 @@ class PlayState extends FlxState
 	var itemGroup:FlxGroup;
 	var flagHash: FlagList;
 	var SceneChangingFlag: Bool = false;
-	var messageText: FlxText;
+	var messageText: FadeText;
 	
 	override public function create():Void
 	{
@@ -78,9 +78,8 @@ class PlayState extends FlxState
 		//setupItems();
 		
 		
-		messageText = new FlxText(30, 640, 975, "Test Text");
-		messageText.height  = 60;
-		messageText.alignment = "center";
+		messageText = new FadeText(30, 650, 975, "Test Text");
+		messageText.setFormat(null, 20, 0xFFFFFF, "center");
 		add(messageText);		
 		
 		// Want this last so it's on top of everything else.
@@ -99,6 +98,8 @@ class PlayState extends FlxState
 		FlxG.levels[0].set("SceneChange", true);  //Trigger a scene change
 		
 		FlxG.mouse.show("assets/data/pointer-yellow.png");
+		
+		messageText.setText("This is a test");
 
 	}
 	
