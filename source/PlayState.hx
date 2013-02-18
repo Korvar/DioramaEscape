@@ -187,7 +187,7 @@ class PlayState extends FlxState
 		tempHotSpotSetFlagList = new FlagList();
 		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
 		tempHotSpotSetFlagList.set("MempoMoved", true); // Pressing this button will move the mempo
-		tempHotSpot = new HotSpot(backDrop.x + 196, backDrop.y + 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		tempHotSpot = new HotSpot(backDrop.x + 196, backDrop.y + 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "You moved the Mempo (mask).", "SamuraiCloseUp", null);
 		hotSpotList.push(tempHotSpot);
 		
 		// Same hotspot as before, except it only shows if the mempo is moved, and puts it back.
@@ -196,7 +196,7 @@ class PlayState extends FlxState
 		tempHotSpotFlagList.set("MempoMoved", true);
 		tempHotSpotSetFlagList.set("SceneChange", true); // Pressing this button will trigger a scene change
 		tempHotSpotSetFlagList.set("MempoMoved", false); // Pressing this button will move the mempo back
-		tempHotSpot = new HotSpot(backDrop.x + 196, backDrop.y + 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "", "SamuraiCloseUp", null);
+		tempHotSpot = new HotSpot(backDrop.x + 196, backDrop.y + 181, 162, 114, tempHotSpotFlagList, tempHotSpotSetFlagList, "You put the Mempo back.", "SamuraiCloseUp", null);
 		hotSpotList.push(tempHotSpot);
 		
 		// Backdrop
